@@ -63,6 +63,10 @@ const userSchema = new mongoose.Schema({
     mailHash:{
         type:String
     },
+    mailVerified:{
+        type:Boolean,
+        default:false
+    },
     tokens: [{
         token: {
             type: String

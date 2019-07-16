@@ -74,13 +74,20 @@ export class SignupComponent implements OnDestroy {
     }
    this.appService.login(obj).subscribe((data:any)=>{
       console.log("login data",data);
-      if(data.error){
-        this.appService.openSnackBar("Invalid Credentials","Sucess")
-      }else{
+      if(data['msg']=='login successfull'){
         this.appService.openSnackBar("Login Successfull","Sucess");
         localStorage.setItem('user',btoa(JSON.stringify(data.data)))
         this.router.navigate(['home']);
       }
+      else if(data.error== true){
+        this.appService.openSnackBar(data['msg'],"Sucess");
+            return;
+      }
+      // if(data.error){
+      //   this.appService.openSnackBar("Invalid Credentials","Sucess")
+      // }else{
+       
+      // }
        // formDirective.resetForm();
       //  this.loginForm.reset();
         

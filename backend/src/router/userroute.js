@@ -24,8 +24,8 @@ router.post('/register', async (req, res) => {
     console.log('users-=-=-=-=-=-=-=-=>', user)
     try {
         let hash = await encodeData.encryptPass(user._id.toString());
-        user.mailHash=hash;
-        let mailsent=await sendMailAfterRegistration(user, hash)
+        user.mailHash = hash;
+        let mailsent = await sendMailAfterRegistration(user, hash)
         await user.save();
         res.status(201).send({
             error: false,
@@ -36,54 +36,63 @@ router.post('/register', async (req, res) => {
     }
 });
 
-async function sendMailAfterRegistration(user,hash) {
+async function sendMailAfterRegistration(user, hash) {
     link = `http://localhost:3002/verify/${user.workemail}?code=${hash}`
     mailContent = `<h2>Good to see you ${user.firstName} ${user.SurName}</h2>
     <p>click on the link below to verify mail ${user.workemail}</p>
     <a href=${link}>VERIFY</a>`
-    return mailFun('subodh.shipgig@gmail.com', 'heading', mailContent)
+    return mailFun(user.workemail, 'Verify mail', mailContent)
 }
 
 
 //--------LogIn--------------
 router.post('/user/login', async (req, res) => {
-    console.log('***********',req.body)
+    console.log('***********', req.body)
     try {
-        var user=await User.findOne({workemail:req.body.workemail});
-      
-        if(!user){
+        var user = await User.findOne({
+            workemail: req.body.workemail
+        });
+
+        if (!user) {
             res.json({
-                error:true,
-                msg:'Invalid credentials'
+                error: true,
+                msg: 'Invalid credentials'
+            })
+        }
+
+        if (!user.mailVerified) {
+            res.json({
+                error: true,
+                msg: 'Please verify your mail ' + user.workemail
             })
         }
         var ans = await bcrypt.compare(req.body.password, user.password);
-        console.log('---------->',ans)
+        console.log('---------->', ans)
         const token = await user.generateAuthToken()
-        console.log("xyz",user);
-        let userData ={
-            firstName:user.firstName,
+        console.log("xyz", user);
+        let userData = {
+            firstName: user.firstName,
             Nickname: user.Nickname,
-            SurName:user.SurName,
-            companyName:user.companyName,
-            workemail:user.workemail,
-            token:user.tokens[0].token
+            SurName: user.SurName,
+            companyName: user.companyName,
+            workemail: user.workemail,
+            token: user.tokens[0].token
         }
-        if(ans){
+        if (ans) {
             res.json({
-                error:false,
-                msg:'login successfull',
-                data:userData
+                error: false,
+                msg: 'login successfull',
+                data: userData
             })
-        }else{
+        } else {
             res.json({
-                error:true,
-                msg:'invalid credentials',
-            }) 
+                error: true,
+                msg: 'invalid credentials',
+            })
         }
-        
+
     } catch (error) {
-      
+
     }
 })
 
@@ -91,15 +100,17 @@ router.get('/verify/:email', async (req, res) => {
     var user = await User.findOne({
         workemail: req.params.email
     })
-    if(user.mailHash==req.query.code){
+    if (user.mailHash == req.query.code) {
+        user.mailVerified = true;
+        await User.findOneAndUpdate({workemail:user.workemail},{$set:{mailVerified:true}})
         res.json({
-            error:false,
-            msg:'mail verified successfully'
+            error: false,
+            msg: 'mail verified successfully'
         })
-    }else{
+    } else {
         res.json({
-            error:true,
-            msg:'mail not verified'
+            error: true,
+            msg: 'mail not verified'
         })
     }
 })
