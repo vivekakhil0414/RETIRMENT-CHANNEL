@@ -1,0 +1,71 @@
+body {
+     margin: 0;
+     font-family: Arial, Helvetica, sans-serif;
+   }
+   .containercenter{
+        text-align: center
+   }
+   .topnav {
+     overflow: hidden;
+     background-color: #2f5597;
+   }
+   
+   .topnav a {
+     float: left;
+     color: #f2f2f2;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+     font-size: 17px;
+   }
+   
+   .topnav a:hover {
+     background-color: #ddd;
+     color: black;
+   }
+   
+
+   
+   .topnav-right {
+     float: right;
+   }
+
+   .border-box{
+        border: 1px solid #000;
+        border-radius: 35px;
+        background: #fefefe;
+        height: 300px;
+        width: 300px;
+        margin: 0 auto;
+   }
+   .loginbtn{
+     padding-right: 10px;
+     position: absolute;
+     top: 10px;
+     right: 10px;
+   }
+   .logo{
+     width: 115px;
+     padding-left: 15px;
+   }
+   .ret-text{
+     font-weight: 700;
+     font-size: 25px;
+     padding-left: 10px;
+     position: relative;
+     top: 6px; 
+   }
+   .p-relative{
+        position: relative;
+   }
+   .heading{
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+   }
+   .nameFi{
+    float: right;
+    padding: 6px 12px;
+    border: 2px solid red;
+    color: red;
+   }

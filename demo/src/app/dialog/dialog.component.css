@@ -1,0 +1,51 @@
+/* .centered{
+    text-align: center;
+    margin-top: 10px;
+} */
+
+
+.scondh4{
+    font-size: 16px;
+    font-weight: bold;
+
+}
+.crddiv{
+    display: inline-flex;
+}
+
+.divp{
+font-weight: 700;
+
+}
+.confimrg{
+    background-color: #0b7fbf;
+    color: white;
+    height: 40px;
+    
+    text-align: center;
+    padding-top: 9px;
+    border-radius: 9px;
+}
+
+.bodydiv{
+    border: 1px solid black;
+    border-radius: 37px;
+   
+    padding: 22px;
+}
+
+.belowbtn{
+    text-align: center;
+   padding: 5px;
+}
+
+.blwleftbtn{
+    background-color: green;
+    min-width: 115px;
+    float: left;
+}
+.blwrightbtn{
+    background-color:red;
+    min-width: 115px;
+    float: right;
+}

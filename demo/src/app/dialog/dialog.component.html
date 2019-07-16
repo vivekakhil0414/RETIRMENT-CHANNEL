@@ -1,0 +1,29 @@
+
+  <mat-card class="register-card" *ngIf="this.data">
+      <div>
+      <h3 class="confimrg">Confirm Your Registration Below</h3>
+      <div class="bodydiv">
+      <h4 class="scondh4">{{this.data.firstName}}&nbsp;&nbsp;{{this.data.SurName}}</h4>
+   
+      <div class="crddiv"><span>CRD# :</span><p>{{this.data.workephone}}</p></div>
+      <div>
+         <p>Broker Regulated by</p><h4>{{this.data.office}}</h4>
+      </div>
+      <div class="crddiv"><span>CRD# :</span><p>{{this.data.workephone}}</p></div>
+      <p>email:{{this.data.workemail}}</p>
+        <p class="divp">Company Name:&nbsp;&nbsp;  {{this.data.companyName}}</p>
+     
+      </div>
+      <div class="belowbtn"> <button mat-button color="green" class="blwleftbtn" (click)="registration()">Yes</button>
+        <button mat-button color="red" class="blwrightbtn" (click)="backtoretirment()">No</button></div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      </mat-card>
+      

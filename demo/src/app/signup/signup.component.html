@@ -1,0 +1,36 @@
+<div class="login-page">
+  
+  <mat-card class="login-card">
+      <h2 class="text-center">Login</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="example-form login">
+   
+      <div >
+        <mat-form-field class="example-full-width form-group">
+          <input matInput placeholder="User Name"  formControlName="Username" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.Username }">
+        
+        </mat-form-field>
+        <mat-form-field class="example-full-width form-group">
+   
+            <input matInput [type]="show ? 'password' : 'text'"  placeholder="Password"    formControlName="Password" class="form-control w-75 ">
+            <mat-icon *ngIf="!show"  (click)="showpassword();" type="password" class="w-25 showpasswordicon eye"> visibility</mat-icon>
+            <i *ngIf="show"  (click)="showpassword();" type="text" class="material-icons hiddeneye">
+                visibility_off
+                </i>
+        </mat-form-field>
+      </div>
+      <div>
+   
+        <button mat-button class="forgotpassword" (click)="movetonotfound()">Forgot password?</button>
+        <button mat-button class="pull-right forgotpassword" (click)="moveRegistration();">Registration</button>
+  
+      </div>
+    
+      <div class="text-center mt-15">
+      <button mat-raised-button color="primary" [disabled] ="this.registerForm.invalid" >Sign In</button>
+    </div>
+    
+  </form>
+  </mat-card>
+  </div>
+  <div>
+  </div>

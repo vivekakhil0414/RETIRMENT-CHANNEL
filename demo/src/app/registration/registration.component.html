@@ -1,0 +1,97 @@
+<div class="login-page">
+    <mat-card class="register-card">
+      <div>
+        <div>
+          <h2 class="register h4d">Register</h2>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" [(ngModel)]="firstName" formControlName="firstName" class="form-control" />
+              <div  class="invalid-feedback">
+               
+                <mat-error [class.has-error]="!registerForm.controls['firstName'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('firstName').hasError('required') &&  (registerForm.get('firstName').dirty || registerForm.get('firstName').touched  )">Name field is required </mat-error>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Nickname">Nick Name</label>
+              <input type="text"  [(ngModel)]="lastName" formControlName="Nickname" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && registerFormNickname.errors }" />
+           
+            </div>
+            <div class="form-group">
+              <label for="lastName">SurName</label>
+              <input type="text"   [(ngModel)]="SurName" formControlName="SurName" class="form-control" />
+             
+              <div  class="invalid-feedback">
+                  
+                    <mat-error [class.has-error]="!registerForm.controls['SurName'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('SurName').hasError('required') &&  (registerForm.get('SurName').dirty || registerForm.get('SurName').touched  )">SurName is required</mat-error>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="companyName">Company Name</label>
+              <input type="text" (input)="setRgex()" [(ngModel)]="companyName"  formControlName="companyName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && registerFormcompanyName.errors }" />
+                <mat-error [class.has-error]="!registerForm.controls['companyName'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('companyName').hasError('required') &&  (registerForm.get('companyName').dirty || registerForm.get('companyName').touched  )">Company Name is required</mat-error>
+            </div>
+            <div class="form-group">
+              <label for="office">office city state </label>
+              <input type="text" [(ngModel)]="office" formControlName="office" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && registerFormoffice.errors }" />
+                <mat-error [class.has-error]="!registerForm.controls['office'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('office').hasError('required') &&  (registerForm.get('office').dirty || registerForm.get('office').touched  )">office city is required</mat-error>
+            </div>
+            <div class="form-group">
+              <label for="workemail">work email</label>
+              <input type="text" [(ngModel)]="workEmail" formControlName="workemail" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && registerFormworkemail.errors }" />
+                <mat-error [class.has-error]="!registerForm.controls['workemail'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('workemail').hasError('required') &&  (registerForm.get('workemail').dirty || registerForm.get('workemail').touched  )">work email is required</mat-error>
+                <mat-error [class.has-error]="!registerForm.controls['workemail'].valid"
+                class="error-message custom-error" *ngIf="registerForm.errors && workEmail && workEmail.length>0 && registerForm.errors.matchEmail">User email does not match the comnpany name</mat-error>
+              </div>
+            <div class="form-group">
+              <label for="workephone">work phone</label>
+              <input type="text"  [(ngModel)]="workPhone" formControlName="workephone" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && registerFormworkephone.errors }" />
+                <mat-error [class.has-error]="!registerForm.controls['workephone'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('workephone').hasError('required') &&  (registerForm.get('workephone').dirty || registerForm.get('workephone').touched  )">work phone is required</mat-error>
+                <mat-error [class.has-error]="!registerForm.controls['workephone'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('workephone').hasError('pattern')  ">Please Enter work number of atleast 10 digit</mat-error>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text"  [(ngModel)]="Username" formControlName="username" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && registerForm.username.errors }" />
+           <mat-error [class.has-error]="!registerForm.controls['username'].valid"
+                class="error-message custom-error" *ngIf="registerForm.get('username').hasError('required') &&  (registerForm.get('username').dirty || registerForm.get('username').touched  )">username is required</mat-error>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" [(ngModel)]="Password" formControlName="password" class="form-control" />
+              <mat-error [class.has-error]="!registerForm.controls['password'].valid"
+              class="error-message custom-error" *ngIf="registerForm.get('password').hasError('required') &&  (registerForm.get('password').dirty || registerForm.get('password').touched  )">Password is required</mat-error>
+            </div>
+            <div class="form-group">
+              <label for="password">Re-Enter Password</label>
+              <input type="password" [(ngModel)]="repassword" formControlName="repassword" class="form-control" />
+              <mat-error  *ngIf="registerForm.errors && repassword && repassword.length>0 && registerForm.errors.matchPassword">Please enter a proper password</mat-error >
+              <mat-error [class.has-error]="!registerForm.controls['repassword'].valid"
+              class="error-message custom-error" *ngIf="registerForm.get('repassword').hasError('required') &&  (registerForm.get('repassword').dirty || registerForm.get('repassword').touched  )">it is a required field</mat-error>
+
+            </div>
+  
+            <div class="form-group text-center">
+              <button [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+            
+             
+            </div>
+          </form>
+        </div>
+      </div>
+  
+    </mat-card>
+  </div>
+  
