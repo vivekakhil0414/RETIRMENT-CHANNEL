@@ -1,4 +1,4 @@
-# demo
+# RETIRMENT-CHANNEL
 requirment for install the project
 
 1-install node version 7.0.0 or above
