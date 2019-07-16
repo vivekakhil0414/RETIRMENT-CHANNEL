@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     }catch(e){
       this.user=null;
     }
-    console.log(this.user)
+    //console.log(this.user)
   }
   gotoregistration(){
       this.Router.navigate(['registration/registeroption'])

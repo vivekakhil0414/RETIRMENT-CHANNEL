@@ -21,7 +21,7 @@ const photo = multer({
 router.post('/register', async (req, res) => {
 
     const user = new User(req.body)
-    console.log('users-=-=-=-=-=-=-=-=>', user)
+    // console.log('users-=-=-=-=-=-=-=-=>', user)
     try {
         let hash = await encodeData.encryptPass(user._id.toString());
         user.mailHash = hash;
@@ -46,7 +46,7 @@ async function sendMailAfterRegistration(user, hash) {
 
 //--------LogIn--------------
 router.post('/user/login', async (req, res) => {
-    console.log('***********', req.body)
+    // console.log('***********', req.body)
     try {
         var user = await User.findOne({
             workemail: req.body.workemail
@@ -66,9 +66,9 @@ router.post('/user/login', async (req, res) => {
             })
         }
         var ans = await bcrypt.compare(req.body.password, user.password);
-        console.log('---------->', ans)
+        // console.log('---------->', ans)
         const token = await user.generateAuthToken()
-        console.log("xyz", user);
+        // console.log("xyz", user);
         let userData = {
             firstName: user.firstName,
             Nickname: user.Nickname,

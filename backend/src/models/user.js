@@ -99,9 +99,9 @@ userSchema.methods.generateAuthToken = async function (){
 //     if(!user){
 //         return false
 //     }else{
-//         console.log(password,user.password)
+//         // console.log(password,user.password)
 //         var ans = await bcrypt.compare(password, user.password)
-//         console.log(ans,user)
+//         // console.log(ans,user)
 //         if(ans){
 //             return user
 //         }else{
@@ -116,7 +116,7 @@ userSchema.methods.generateAuthToken = async function (){
 userSchema.pre('save', async function (next) {
     const user = this
     user.password = await bcrypt.hash(user.password,8)
-    //console.log(user.password)
+    //// console.log(user.password)
     next();
 })
 

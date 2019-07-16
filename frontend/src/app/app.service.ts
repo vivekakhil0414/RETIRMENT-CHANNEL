@@ -30,7 +30,7 @@ export class AppService {
    }
 
 registration(obj){
-  console.log("abc",obj);
+ // console.log("abc",obj);
   return this.http.post(`${this.baseUrl}register`, {...obj})
 }
 

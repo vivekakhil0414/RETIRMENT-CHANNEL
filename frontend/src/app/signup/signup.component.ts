@@ -73,7 +73,7 @@ export class SignupComponent implements OnDestroy {
       password: value.Password
     }
    this.appService.login(obj).subscribe((data:any)=>{
-      console.log("login data",data);
+     // console.log("login data",data);
       if(data['msg']=='login successfull'){
         this.appService.openSnackBar("Login Successfull","Sucess");
         localStorage.setItem('user',btoa(JSON.stringify(data.data)))

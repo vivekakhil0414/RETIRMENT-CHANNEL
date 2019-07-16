@@ -11,5 +11,5 @@ app.use(bodyParser.urlencoded({ extended: false }))
  app.use('/',userrouter)
 
 app.listen(port, ()=>{ 
-    console.log('srever is listening on port: '+port)
+     console.log('srever is listening on port: '+port)
 })

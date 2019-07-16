@@ -43,7 +43,7 @@ const sendmail=( reciever, subject, message ) => {
     }
   
     smtpTranspo.sendMail(mailOptions, function(error, response) {
-         console.log(error,'+++++++++',response)
+         // console.log(error,'+++++++++',response)
         smtpTranspo.close();
         if(!error){
               resolve(true)

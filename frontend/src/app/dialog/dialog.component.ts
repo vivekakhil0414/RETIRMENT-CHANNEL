@@ -11,7 +11,9 @@ import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/ove
 export class DialogComponent implements OnInit {
 
   constructor(  public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any ,private Router:Router,private appservice:AppService ) { console.log(data,'daaaaaaaaaaaaaaaaaaaaaaa')}
+    @Inject(MAT_DIALOG_DATA) public data: any ,private Router:Router,private appservice:AppService ) { 
+     // console.log(data,'daaaaaaaaaaaaaaaaaaaaaaa')
+    }
 
   ngOnInit() {
   }
@@ -23,9 +25,9 @@ export class DialogComponent implements OnInit {
     // this.Router.navigate(['home'])
   }
   registration(){
-    console.log('asasasasas',this.data);
+    //console.log('asasasasas',this.data);
     this.appservice.registration(this.data).subscribe((data)=>{
-     console.log('done data',data);
+     //console.log('done data',data);
 
      if(data['msg'] =='User registered successfully'){
      this.appservice.openSnackBar("User registered successfully","Sucess")

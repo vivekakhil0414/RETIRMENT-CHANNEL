@@ -74,7 +74,7 @@ export class RegistrationComponent implements OnInit  {
    this.mailPattern=  `([a-zA-Z0-9_/\-/\.]+)@(${this.companyName.trim()}.com)$`;    //`^([\w]*[\w\.]*(?!\.)@${this.companyName.trim()}.com)`
   }
   passwordMatchValidator = (group: FormGroup) => {
-    console.log(group,'grouppppp')
+   // console.log(group,'grouppppp')
     let obj = {}
     obj['matchEmail'] = false
     obj['matchPassword'] = false
@@ -92,7 +92,7 @@ export class RegistrationComponent implements OnInit  {
     if(this.companyName && this.companyName.length > 0 && group.controls.workemail.value){
     let mail = group.controls.workemail.value;
     let maiRgx =  new RegExp( this.mailPattern);
-    console.log(maiRgx.test(mail),maiRgx,'testtttttter')
+    //console.log(maiRgx.test(mail),maiRgx,'testtttttter')
       
        if( maiRgx.test(mail)) { 
         status =  null 
