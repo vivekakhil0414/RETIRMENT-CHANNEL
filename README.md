@@ -1,5 +1,5 @@
 # RETIRMENT-CHANNEL
-Requirment for install the project
+Requirment for project installation
 
 1-install node version 7.0.0 or above
 
