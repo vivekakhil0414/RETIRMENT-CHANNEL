@@ -44,11 +44,6 @@ async function sendMailAfterRegistration(user, hash) {
     return mailFun(user.workemail, 'Verify mail', mailContent)
 }
 
-
-
-
-
-
 //--------LogIn--------------
 router.post('/user/login', async (req, res) => {
     console.log('***********', req.body)
