@@ -45,6 +45,10 @@ async function sendMailAfterRegistration(user, hash) {
 }
 
 
+
+
+
+
 //--------LogIn--------------
 router.post('/user/login', async (req, res) => {
     console.log('***********', req.body)
